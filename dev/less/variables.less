@@ -1,6 +1,21 @@
-@desktop: ~"(min-width: 62em)";
+@desktop: ~"(min-width: 65em)";
 @tablet: ~"(min-width: 48em)";
 @mobile-nav-width: 220px;
 @tablet-nav-width: 300px;
 @desktop-nav-width: 350px;
 @slide-time: 400ms;
+@underline-color: #03A9F4;
+
+.addUnderline(@width, @color) {
+    &::after {
+    content: '';
+    position: relative;
+    display: block;
+    width: @width;
+    height: 4px;
+    background-color: @color;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    }
+}
