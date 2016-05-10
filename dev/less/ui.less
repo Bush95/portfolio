@@ -1,11 +1,11 @@
 .page-nav { 
-    transform: translate3d(@mobile-nav-width, 0, 0);
-    width: @mobile-nav-width;
+    transform: translate3d(@nav-width, 0, 0);
+    width: @nav-width;
     min-height: 100%;
     position: fixed;
     right: 0;
     top: 0;
-    background-color: #000000;
+    background-color: @bg2;
     padding: 20px;
         border-left: solid 2px #585858;
     ul {
@@ -98,14 +98,14 @@
 
 .nav-open {
     .page-wrapper {
-        transform: translate3d(-@mobile-nav-width, 0, 0);
+        transform: translate3d(-@nav-width, 0, 0);
     }
     .page-nav {
         transform: translate3D(0, 0, 0);
     }
     .hamburger,
     .to-top {
-        transform: translate3d(-@mobile-nav-width, 0, 0);
+        transform: translate3d(-@nav-width, 0, 0);
     }
     .hamburger {
         .top,
