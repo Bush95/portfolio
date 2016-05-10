@@ -17,7 +17,7 @@ module.exports = function (grunt) {
         },
         autoprefixer: {
                 options: {
-                    browsers: ['last 4 versions', 'ie 6', 'ie 7', 'ie 8', 'ie 9', 'Firefox < 20', 'Firefox >= 20', 'iOS 7', 'Firefox ESR', 'last 5 Opera versions', 'last 5 op_mini versions', 'last 5 op_mob versions', 'last 5 and_chr versions']
+                    browsers: ['last 2 versions', 'ie 6', 'ie 7', 'ie 8', 'ie 9', 'Firefox >= 20', 'iOS 7', 'Firefox ESR', 'last 5 Opera versions', 'last 5 op_mini versions', 'last 5 op_mob versions', 'last 5 and_chr versions']
                 },
                     'dev/css/mainprefixed.css': 'dev/css/main.css'
         },
