@@ -26,47 +26,50 @@
             e.preventDefault();
             $body.removeClass('nav-open');
             var el = this;
-            
+
             var scrollToHref = function (element, time) {
                 var destination = $('.' + $(element).attr('href').slice(1)).offset().top;
                 $('html, body').animate({
                     scrollTop: destination
-                }, time); 
+                }, time);
             };
-            
+
             window.setTimeout(function () {
                 scrollToHref(el, 500);
-            },300);
+            }, 300);
         });
         $('#contact-form').on('submit', validateForm);
     };
-    
+
     var validateEmail = function (email) {
         var re = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
         return re.test(email);
     }
-    
+
     var validateForm = function (e) {
-        var input = $(this).serialize();//.replace('/+/g','&20').replace('/@/', '%40');
+        var input = $(this).serialize(); //.replace('/+/g','&20').replace('/@/', '%40');
         e.preventDefault();
         $.ajax({
             type: "POST",
             url: ("https://formspree.io/" + secureEmail('gmail.com', '59azulakrtoip')),
             data: input,
             cache: false,
-            success: function(html) {
-                alert('message: ' + html);
+            success: function (html, statusm, jqXHR) {
+                console.log('success: ' + html + '/n -----------#####---------' + statusm + '/n -----------#####---------' + jqXHR);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log('error' + xhr.responseText + '/n -----------#####---------' + thrownError);
             }
         });
         console.log(input);
     }
-    
+
     var secureEmail = function (domain, reversedStr) {
         var beforeAt = reversedStr.split('').reverse().join('');
         var readyEmail = beforeAt + '@' + domain;
         return readyEmail;
     };
-    
-    addListeners(); 
+
+    addListeners();
     $('#contact-form').attr('action', "https://formspree.io/" + secureEmail('gmail.com', '59azulakrtoip'));
 }());
