@@ -38,15 +38,27 @@
                 scrollToHref(el, 500);
             },300);
         });
+        //$('#contact-form').on('submit', validateForm);
     };
-
+    
+    var validateEmail = function (email) {
+        var re = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
+        return re.test(email);
+    }
+    
+    var validateForm = function (e) {
+        var input = $(this).serialize().replace('/+/g','&20').replace('/@/', '%40');
+        e.preventDefault();
+        console.log(input);
+    }
+    
     var secureEmail = function (domain, reversedStr) {
         var reversedStr = '59azulakrtoip';
         var beforeAt = reversedStr.split('').reverse().join('');
         var readyEmail = 'mailto:' + beforeAt + '@' + domain;
         $('#contact-email').attr('href', readyEmail);
     };
-
+    
     addListeners();
     secureEmail('gmail.com', '59azulakrtoip');
 
