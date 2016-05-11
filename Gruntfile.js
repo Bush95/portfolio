@@ -33,12 +33,8 @@ module.exports = function (grunt) {
                 files: 'dev/less/*.less',
                 tasks: ['less', 'autoprefixer', 'cssmin']
             },
-            index: {
-                files: 'dev/index.html',
-                tasks: 'copy'
-            },
-            js: {
-                files: 'dev/js/script.js',
+            source: {
+                files: ['dev/index.html', 'dev/mailer.php', 'dev/js/script.js'],
                 tasks: 'copy'
             }
         },
@@ -48,33 +44,9 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: 'dev',
-                        src: ['css/reset.css'],
+                        src: ['projects/**', 'mailer.php', 'index.html', 'js/**', 'images/**', 'css/reset.css', 'phpMailer/**'],
                         dest: 'dest/'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'dev',
-                        src: ['images/**'],
-                        dest: 'dest/'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'dev',
-                        src: ['js/**'],
-                        dest: 'dest/'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'dev',
-                        src: ['projects/**'],
-                        dest: 'dest/'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'dev',
-                        src: ['index.html'],
-                        dest: 'dest/'
-                    },
+                    }
                 ]
             },
         },
