@@ -58,7 +58,7 @@
                 console.log('success: ' + html + '/n -----------#####---------' + statusm + '/n -----------#####---------' + jqXHR);
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                console.log('error' + xhr.responseText + '/n -----------#####---------' + thrownError);
+                console.log('error' + xhr + '/n -----------#####---------' + thrownError);
             }
         });
         console.log(input);
