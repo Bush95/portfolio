@@ -38,7 +38,7 @@
                 scrollToHref(el, 500);
             },300);
         });
-        //$('#contact-form').on('submit', validateForm);
+        $('#contact-form').on('submit', validateForm);
     };
     
     var validateEmail = function (email) {
@@ -47,19 +47,26 @@
     }
     
     var validateForm = function (e) {
-        var input = $(this).serialize().replace('/+/g','&20').replace('/@/', '%40');
+        var input = $(this).serialize();//.replace('/+/g','&20').replace('/@/', '%40');
         e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: ("https://formspree.io/" + secureEmail('gmail.com', '59azulakrtoip')),
+            data: input,
+            cache: false,
+            success: function(html) {
+                alert('message: ' + html);
+            }
+        });
         console.log(input);
     }
     
     var secureEmail = function (domain, reversedStr) {
-        var reversedStr = '59azulakrtoip';
         var beforeAt = reversedStr.split('').reverse().join('');
-        var readyEmail = 'mailto:' + beforeAt + '@' + domain;
-        $('#contact-email').attr('href', readyEmail);
+        var readyEmail = beforeAt + '@' + domain;
+        return readyEmail;
     };
     
-    addListeners();
-    secureEmail('gmail.com', '59azulakrtoip');
-
+    addListeners(); 
+    $('#contact-form').attr('action', "https://formspree.io/" + secureEmail('gmail.com', '59azulakrtoip'));
 }());
