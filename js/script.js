@@ -49,20 +49,19 @@
     var validateForm = function (e) {
         var input = $(this).serialize(); //.replace('/+/g','&20').replace('/@/', '%40');
         e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: ("https://formspree.io/" + secureEmail('gmail.com', '59azulakrtoip')),
+            $.ajax({
+            type: 'POST',
+            url: $('#contact-form').attr('action'),
             data: input,
-            cache: false,
-            success: function (html, statusm, jqXHR) {
-                console.log('success: ' + html + '/n -----------#####---------' + statusm + '/n -----------#####---------' + jqXHR);
+            success: function(result) {
+                alert('wysłano');
+                console.log(result);
             },
-            error: function (xhr, ajaxOptions, thrownError) {
-                console.log('error' + xhr + '/n -----------#####---------' + thrownError);
+            error: function (responseData, textStatus, errorThrown) {
+                alert('POST failed.');
             }
         });
-        console.log(input);
-    }
+    };
 
     var secureEmail = function (domain, reversedStr) {
         var beforeAt = reversedStr.split('').reverse().join('');
@@ -71,5 +70,4 @@
     };
 
     addListeners();
-    $('#contact-form').attr('action', "https://formspree.io/" + secureEmail('gmail.com', '59azulakrtoip'));
-}());
+    }());
