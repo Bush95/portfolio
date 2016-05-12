@@ -37,10 +37,14 @@
         </header>
         <section class="about">
             <h2 class="section-header">O mnie</h2>
-            <p class="author-description">Cześć! Nazywam się Piotr Kałuża i jestem 20 letnim Front End Developerem poszukującym swojej pierwszej pracy.</p>
-            <a href="#" title="Odwiedź mój profil na GitHub"><img src="images/logo_github.png" alt="GitHub logo"></a>
-            <a href="#" title="Odwiedź mój profil na Linked In"><img src="images/logo_linked-in.png" alt="Linked In logo"></a>
-            <a href="#" title="Odwiedź mój profil na Goldenline"><img src="images/logo_goldenline.png" alt="Goldenline logo"></a>
+            <div class="about-inner">
+                <p>Cześć! Nazywam się Piotr Kałuża i jestem 20 letnim Front End Developerem poszukującym swojej pierwszej pracy.</p>
+                <div class="social-media">
+                    <a href="https://github.com/Bush95" title="Odwiedź mój profil na GitHub"><img src="images/logo_github.png" alt="GitHub logo"></a>
+                    <a href="https://www.linkedin.com/in/peterkaluza" title="Odwiedź mój profil na Linked In"><img src="images/logo_linked-in.png" alt="Linked In logo"></a>
+                    <a href="https://www.goldenline.pl/piotr-kaluza9/" title="Odwiedź mój profil na Goldenline"><img src="images/logo_goldenline.png" alt="Goldenline logo"></a>
+                </div>
+            </div>
         </section>
 
         <section class="portfolio">
@@ -146,8 +150,7 @@
         </section>
         <section class="contact">
             <h2 class="section-header">Kontakt</h2>
-            <form id="contact-form" action="mailer.php"
-              method="POST">
+            <form id="contact-form" action="mailer.php" method="POST">
                 <div>
                     <label for="name">Imię i nazwisko</label>
                     <input type="text" name="name" id="name">
