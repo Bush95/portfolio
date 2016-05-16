@@ -2,7 +2,6 @@
 /*global $, jQuery, alert*/
 (function () {
     'use strict';
-
     var addListeners = function () {
         var $body = $('body');
 
