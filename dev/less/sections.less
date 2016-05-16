@@ -54,69 +54,42 @@
 
 .about {
     position: relative;
-    background-color: @bg2;
-    color: #FFFFFF;
+    background-color: #FFFFFF;
     text-align: center;
     padding: 50px 0;
-    .author-description {
-        font-size: 1.8rem;
+    .about-inner {
         padding: 0 20px;
-        line-height: 2rem;
         max-width: 968px;
         margin: 0 auto;
+        text-align: left;
+        font-size: 1.8rem;
+        line-height: 2rem;
     }
-}
-
-.skills {
-    padding: 60px 0;
-    position: relative;
-    background-color: #FFFFFF;
-    .addTriangles(bottom, @bg1);
-    .section-header {
-        margin: 20px 0 60px 0;
-    }
-    .skill-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        li {
+    .social-media {
+        margin-top: 20px;
+        a {
             display: inline-block;
-            overflow: hidden;
-            height: 100px;
-            line-height: 100px;
-            margin: 26px;
-            img {
-                width: 100%;
-                max-width: 100px;
-                max-height: 100%;
-                vertical-align: middle;
-            }
-            @media @tablet {
-                height: 150px;
-                line-height: 150px;
-                width: 14%;
-                margin: 40px 5%;
-                img {
-                    max-width: 150px;
-                    max-height: 150px;
-                }
-            }
+            padding-right:20px;
         }
     }
 }
 
 .portfolio {
-    position: relative;
     min-height: 100vh;
-    padding-top: 40px 0;
+    padding: 40px 0 80px 0;
     background-color: @bg1;
     color: #FFFFFF;
     .section-header {
-        margin: 50px 0 ;
+        margin: 50px 0;
     }
     .portfolio-inner {
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
+        .portfolio-item-inner {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
         .portfolio-item {
             border: solid rgba(255, 255, 255, 0.2) 1px;
             margin-bottom: -2px;
@@ -124,24 +97,25 @@
             position: relative;
             flex-basis: 100%;
             max-width: 100%;
-            overflow: hidden;
-            &:hover {
-                .portfolio-item-layer {
-                    transform: translate3d(100%, 0, 0);
-                }
+            .portfolio-item-inner:hover .portfolio-item-layer{
+                //transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
+                opacity: 1;
             }
             img {
                 width: 100%;
             }
             .portfolio-item-layer {
+                //transform:matrix3d(1,0,0.00,0,0.00,0,1.00,0.008,0,-1,0,0,0,0,0,1);
+                transform-origin: center top 0px;
                 position: absolute;
                 top: 0;
-                left: -100%;
+                left: 0;
+                opacity: 0;
                 width: 100%;
-                height: 100%; 
+                height: 100%;
                 background-color: @bg3;
                 color: #FFFFFF;
-                transition: all 600ms;
+                transition: all 250ms;
                 .portfolio-item-title {
                     position: absolute;
                     width: 100%;
@@ -164,7 +138,7 @@
                     display: block;
                     width: 100%;
                     padding: 24px;
-                    font-size: 2rem;
+                    font-size: 1.8rem;
                 }
             }
         }
@@ -222,37 +196,95 @@
     background-image: url(../images/portfolio/paper_plane.png);
 }
 
+.skills {
+    padding: 60px 0;
+    position: relative;
+    background-color: #FFFFFF;
+    .addTriangles(top, @bg1);
+    .section-header {
+        margin: 10px 0 60px 0;
+    }
+    .skill-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li {
+            display: inline-block;
+            overflow: hidden;
+            height: 100px;
+            line-height: 100px;
+            margin: 26px;
+            img {
+                width: 100%;
+                max-width: 100px;
+                max-height: 100%;
+                vertical-align: middle;
+            }
+            @media @tablet {
+                height: 150px;
+                line-height: 150px;
+                width: 14%;
+                margin: 40px 5%;
+                img {
+                    max-width: 150px;
+                    max-height: 150px;
+                }
+            }
+        }
+    }
+}
+
 .contact {
-    //background: url(../images/bg_2.png);
+    background: url(../images/bg_contact.png);
     background-color: #FFFFFF;
     padding: 50px 0;
+    color: #FFFFFF;
 }
 
 #contact-form {
-    width: 500px;
-    margin: 0 auto;
+    width: 100%;
+    padding: 0 20px;
     text-align: right;
+    @media @tablet {
+        width: 500px;
+        padding: 0;
+        margin: 0 auto;
+    }
     label {
         display: block;
         text-align: left;
-        margin: 20px 0 6px 0;
+        margin: 20px 0 8px 0;
+        font-weight: bold;
     }
     input,
     textarea {
+        color: #E9E9E9;
+        background-color: rgba(255,255,255,.2);
+        border: none;
         width: 100%;
         display: block;
         padding: 10px;
+        transition: background-color 350ms, color 350ms;
+        font-size: 1.8rem;
+        &:focus {
+            background-color: #FFFFFF;
+            color: @primary-text-color;
+        }
     }
     textarea {
         resize: vertical;
+        min-height: 140px;
+        font-size: 2.2rem;
     }
     .btn {
         display: inline-block;
         width: inherit;
         padding: 10px;
         margin-top: 20px;
+        cursor: pointer;
     }
 }
+
 .page-footer {
     background-color: @bg4;
     color: #FFFFFF;
