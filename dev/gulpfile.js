@@ -1,13 +1,10 @@
 var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     less = require('gulp-less'),
-    LessAutoprefix = require('less-plugin-autoprefix'),
     server = require('gulp-server-livereload'),
     fs = require('fs'),
     image = require('gulp-image'),
-    autoprefix = new LessAutoprefix({
-        browsers: ['last 6 versions', '> 2%']
-    }),
+    autoprefix = require('gulp-autoprefixer'),
     copy = function (src, dest) {
         fs.createReadStream(src).pipe(fs.createWriteStream(dest));
     };
@@ -26,8 +23,11 @@ gulp.task('minjs', function () {
 gulp.task('less', function () {
     gulp.src('less/main.less')
         .pipe(less({
-            compress: true,
-            plugins: [autoprefix]
+            compress: true
+        }))
+        .pipe(autoprefix({
+            browsers: ['last 4 versions', '>1%', 'IE 7'],
+            cascade: false
         }))
         .pipe(gulp.dest('../dist/css/'))
 });
@@ -48,6 +48,7 @@ gulp.task('image', function () {
         .pipe(gulp.dest('../dist/images'));
 });
 
+
 gulp.task('watch', function () {
     gulp.watch('js/*.js', ['minjs']);
     gulp.watch('less/**/*.less', ['less']);
@@ -58,7 +59,6 @@ gulp.task('webserver', function () {
     gulp.src('../dist')
         .pipe(server({
             livereload: true,
-            directoryListing: true,
             open: true
         }));
 });
