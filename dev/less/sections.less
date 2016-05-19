@@ -1,16 +1,18 @@
 .page-wrapper {
     transition: transform @slide-time;
     width: 90%;
-    margin: 60px auto;
-    box-shadow: 0 0 2px 8px lighten(@bg2, 3%);
+    margin: 20px auto;
+    box-shadow: 0 0 1px 8px lighten(@bg2, 3%);
+    @media @tablet {
+        margin: 60px auto;
+    }
 }
 
 // ### Page-header ###
-
 .page-header {
-    position: relative; 
+    position: relative;
     height: auto;
-    padding: 200px 36px;
+    padding: 200px 10px;
     text-align: center;
     color: #ffffff;
     background: #87e0fd;
@@ -76,7 +78,6 @@
 }
 
 // ### About ###
-
 .about {
     background-color: @bg3;
     text-align: center;
@@ -101,7 +102,6 @@
 }
 
 // ### Portfolio ###
-
 .portfolio {
     min-height: 100vh;
     padding: 40px 0 80px 0;
@@ -117,9 +117,6 @@
             position: relative;
             flex-basis: 100%;
             max-width: 100%;
-            &:hover .portfolio-item-layer {
-                opacity: 1;
-            }
             img {
                 width: 100%;
                 vertical-align: middle;
@@ -133,7 +130,7 @@
                 height: 100%;
                 background-color: #FFFFFF;
                 transition: opacity 250ms;
-                .portfolio-item-title {
+                .portfolio-item-layer-inner {
                     position: absolute;
                     width: 100%;
                     font-size: 3rem;
@@ -143,14 +140,28 @@
                         margin-bottom: 30px;
                     }
                     a {
+                        display: inline-block;
                         margin: 0 15px;
-                        &:hover .fa{
+                        width: 0px; // *
+                        transition: all 20ms;
+                        overflow: hidden;
+                        &:hover .fa {
                             transform: rotateY(180deg);
                         }
                     }
                     .fa {
                         font-size: 5rem;
                         transition: all 400ms;
+                    }
+                }
+            }
+            
+            &:hover {
+                .portfolio-item-layer {
+                    opacity: 1;
+                    a {
+                        width: 50px; /* fix when user click for the first time on touch device, now he cant be 
+redirected to link */
                     }
                 }
             }
@@ -173,7 +184,6 @@
 }
 
 // ### Skills ###
-
 .skills {
     padding: 60px 0;
     position: relative;
@@ -190,7 +200,8 @@
             overflow: hidden;
             height: 100px;
             line-height: 100px;
-            margin: 26px;
+            width: 50%;
+            margin: 12px -1px;
             img {
                 width: 100%;
                 max-width: 100px;
@@ -212,7 +223,6 @@
 }
 
 // ### Contact ###
-
 .contact {
     background: url(../images/bg_contact.png);
     background-color: #FFFFFF;
@@ -271,7 +281,6 @@
 }
 
 // ### Footer ###
-
 .page-footer {
     background-color: darken(@bg2, 3%);
     color: rgba(255, 255, 255, 0.4);
@@ -280,6 +289,7 @@
     padding: 15px;
     font-size: 1.4rem;
     letter-spacing: 1px;
+    transition: transform @slide-time;
     .social-media {
         margin: 10px 10px 16px 10px;
         i {
