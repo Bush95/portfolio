@@ -53,6 +53,7 @@ gulp.task('watch', function () {
     gulp.watch('js/*.js', ['minjs']);
     gulp.watch('less/**/*.less', ['less']);
     gulp.watch('index.html', ['copyfiles']);
+    gulp.watch('images/**/*', ['image']);
 });
 
 gulp.task('webserver', function () {
