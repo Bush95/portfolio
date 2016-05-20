@@ -5,22 +5,11 @@
     var addListeners = function () {
         var $body = $('body');
 
-        $(window).scroll(function () {
-            if ($(window).scrollTop() >= 300) {
-                $('.to-top').fadeIn(300);
-            } else {
-                $('.to-top').fadeOut(300);
-            }
-        });
+
         $('.hamburger').on('click', function () {
             $body.toggleClass('nav-open');
         });
-        $('.to-top').on('click', function () {
-            $body.removeClass('nav-open')
-            $('html, body').animate({
-                scrollTop: 0
-            }, 300);
-        });
+        
         $('.page-nav').on('click', 'a', function (e) {
             e.preventDefault();
             $body.removeClass('nav-open');
