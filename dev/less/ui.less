@@ -1,13 +1,13 @@
 .page-nav { 
     transform: translate3d(@nav-width, 0, 0);
     width: @nav-width;
-    min-height: 100%;
+    min-height: 9999px;
     position: fixed;
     right: 0;
     top: 0;
     background-color: @bg2;
     padding: 20px;
-        border-left: solid 2px #585858;
+    border-left: solid 2px #585858;
     ul {
         margin: 0;
         list-style: none;
@@ -19,12 +19,15 @@
                 font-size: 1.8rem;
                 padding: 10px 0;
                 text-transform: uppercase;
-                border-bottom: 1px dotted #7e7e7e;
+                transition: .3s;
                 &:hover {
-                    border-bottom-color: #FFFFFF;
+                    padding-left: 20px;
                 }
             }
         }
+    }
+    @media @desktop {
+        min-height: 100%;
     }
 }
 
